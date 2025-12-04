@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* SevaStay Brand Colors - Navy Blue, Beige, Gold */
+    --background: 39 43% 91%; /* Beige/Cream for sections */
+    --foreground: 0 0% 12%; /* Dark text for headings */
+
+    --card: 0 0% 100%; /* White card background */
+    --card-foreground: 0 0% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 12%;
+
+    /* Navy Blue - Header & Footer #0D2A47 */
+    --primary: 209 68% 16%;
+    --primary-foreground: 0 0% 100%;
+    --primary-dark: 209 73% 20%; /* #0E315A for primary buttons */
+
+    /* Beige/Cream - Section background #F3EBDD */
+    --secondary: 39 43% 91%;
+    --secondary-foreground: 0 0% 12%;
+
+    /* Gold/Taupe - Buttons & accents #C4BBA8 */
+    --accent: 45 20% 71%;
+    --accent-foreground: 0 0% 12%;
+    --accent-hover: 45 20% 65%;
+
+    --muted: 39 43% 91%;
+    --muted-foreground: 0 0% 47%; /* Gray text #777777 */
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 45 20% 71%; /* Gold/Taupe for borders */
+    --input: 45 20% 85%;
+    --ring: 45 20% 71%;
+
+    --radius: 0.75rem;
+
+    /* Custom design tokens */
+    --shadow-soft: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-medium: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-large: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s ease-in-out;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-foreground;
+  }
+}
+
+@layer utilities {
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-dark)) 100%);
+  }
+
+  .gradient-overlay {
+    background: linear-gradient(180deg, rgba(13, 42, 71, 0) 0%, rgba(13, 42, 71, 0.8) 100%);
+  }
+}
+@keyframes slide-seamless {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-slide-seamless {
+  display: inline-flex;
+  animation: slide-seamless 45s linear infinite;
+}
